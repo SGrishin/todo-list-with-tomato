@@ -1,0 +1,14 @@
+.to-do-item {
+    display: flex;
+}
+.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.delete-button {
+    margin-left: 8px;
+    opacity: 0.2;
+}
+.delete-button:hover {
+    opacity: 1;
+}

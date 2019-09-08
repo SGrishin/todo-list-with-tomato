@@ -1,0 +1,28 @@
+.circle {
+    border-radius: 50%;
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    background-color: rgb(44,108,128);
+    position: relative;
+}
+
+.bar {
+    margin: 0 auto;
+    position: absolute;
+    background-color: #fff;
+}
+
+.horizontal {
+    width: 70%;
+    height: 20%;
+    left: 15%;
+    top: 40%;
+}
+
+.vertical {
+    width: 20%;
+    height: 70%;
+    left: 40%;
+    top: 15%;
+}

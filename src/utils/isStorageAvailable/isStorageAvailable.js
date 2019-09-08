@@ -1,0 +1,1 @@
+export default (storageName) => window[storageName] ? true : false;

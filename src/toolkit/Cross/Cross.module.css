@@ -1,0 +1,28 @@
+.wrap {
+    border-radius: 50%;
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.bar {
+    margin: 0 auto;
+    position: absolute;
+    background-color: grey;
+}
+
+.main {
+    width: 70%;
+    height: 20%;
+    left: 15%;
+    top: 40%;
+}
+
+.side {
+    width: 20%;
+    height: 70%;
+    left: 40%;
+    top: 15%;
+}

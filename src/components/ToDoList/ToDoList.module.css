@@ -1,0 +1,18 @@
+.to-do-list {
+    border: 1px solid grey;
+    width: 600px;
+}
+.input-with-plus {
+    display: flex;
+    flex-direction: row;
+}
+.input {
+    width: 100%;
+}
+.circle-with-plus {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.to-do-item {
+    margin-top: 5px;
+}
