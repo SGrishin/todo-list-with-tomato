@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { SPECIAL_KEYS } from '../../constants';
 import { Button, Input, CircleWithPlus } from '../../toolkit';
 import { uniqId, sessionStorageManager } from '../../utils';
 import ToDoItem from '../ToDoItem';
@@ -10,6 +11,8 @@ export default class ToDoList extends PureComponent {
     constructor(props) {
         super(props);
 
+        this.inputRef = React.createRef();
+
         this.state = {
             value: sessionStorageManager.getItem('value') || '',
             toDoItems: sessionStorageManager.getItem('toDoItems') || []
@@ -17,10 +20,12 @@ export default class ToDoList extends PureComponent {
     }
 
     componentDidMount() {
+        window.addEventListener('keydown', this.handleKeysDown);
         window.addEventListener('beforeunload', this.handleBeforeUnload);
     }
 
     componentWillMount() {
+        window.removeEventListener('keydown', this.handleKeysDown);
         window.removeEventListener('beforeunload', this.handleBeforeUnload);
     }
 
@@ -31,6 +36,7 @@ export default class ToDoList extends PureComponent {
                 <div className={cx(theme['to-do-list'])} >
                     <div className={cx(theme['input-with-plus'])}>
                         <Input
+                            inputRef={this.inputRef}
                             className={cx(theme.input)}
                             label={'enter todo description'}
                             value={value}
@@ -84,6 +90,16 @@ export default class ToDoList extends PureComponent {
             value: '',
             toDoItems: []
         });
+    };
+
+    handleKeysDown = (event) => {
+        if (event.which === SPECIAL_KEYS.ENTER) {
+            this.handleAddToDo();
+        }
+
+        if (this.inputRef.current) {
+            this.inputRef.current.focus();
+        }
     };
 
     handleBeforeUnload = () => {

@@ -9,11 +9,24 @@ export default class Input extends PureComponent {
         onChange: null
     };
 
+    constructor(props) {
+        super(props);
+
+        this.inputRef = props.inputRef || React.createRef();
+    }
+
     render() {
         const { className, label, value } = this.props;
 
         return (
-            <input className={cx(className)} placeholder={label} value={value} onChange={this.handleChange}/>
+            <input
+                ref={this.inputRef}
+                className={cx(className)}
+                placeholder={label}
+                value={value}
+                autoFocus
+                onChange={this.handleChange}
+            />
         );
     }
 
