@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { SPECIAL_KEYS } from '../../constants';
-import { Button, Input, CircleWithPlus } from '../../toolkit';
+import { Button, Input, CircleWithPlus, Clock } from '../../toolkit';
 import { uniqId, sessionStorageManager } from '../../utils';
 import ToDoItem from '../ToDoItem';
 import theme from './ToDoList.module.css';
@@ -30,10 +30,15 @@ export default class ToDoList extends PureComponent {
     }
 
     render() {
-        const { value, toDoItems } = this.state;
+        const { value, toDoItems, startTimer } = this.state;
 
         return (
                 <div className={cx(theme['to-do-list'])} >
+                    <Clock
+                        startTimer={startTimer}
+                        timerTime={25 * 60 * 1000}
+                        onTimerEnd={this.handleStop}
+                    />
                     <div className={cx(theme['input-with-plus'])}>
                         <Input
                             inputRef={this.inputRef}
@@ -51,6 +56,7 @@ export default class ToDoList extends PureComponent {
                         <ToDoItem
                             className={cx(theme['to-do-item'])}
                             key={toDoItem._id}
+                            onStart={this.handleStart(index)}
                             onDelete={this.handleDeleteToDo(index)}
                             {...toDoItem}
                         />
@@ -78,6 +84,14 @@ export default class ToDoList extends PureComponent {
             toDoItems: [{_id: uniqId('toDoItem'), description: value}].concat(toDoItems)
         });
     }
+
+    handleStart = (index) => () => {
+        this.setState({ startingToDoIndex: index, startTimer: true });        
+    };
+
+    handleStop = () => {
+        this.setState({ startingToDoIndex: null, startTimer: false });
+    };
 
     handleDeleteToDo = (index) => () => {
         this.setState({

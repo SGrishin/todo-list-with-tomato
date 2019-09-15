@@ -3,7 +3,7 @@ import cx from 'classnames';
 import theme from './Input.module.css';
 
 export default class Input extends PureComponent {
-    defaultProps = {
+    static defaultProps = {
         label: '',
         value: '',
         onChange: null

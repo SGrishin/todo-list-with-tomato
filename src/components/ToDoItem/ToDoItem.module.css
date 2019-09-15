@@ -1,6 +1,10 @@
 .to-do-item {
     display: flex;
 }
+.start {
+    margin-left: 6px;
+    margin-right: 8px;
+}
 .description {
     overflow: hidden;
     text-overflow: ellipsis;
