@@ -1,6 +1,10 @@
 .to-do-list {
-    border: 1px solid grey;
     width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+.clock {
+    margin: auto;
 }
 .input-with-plus {
     display: flex;
@@ -15,4 +19,12 @@
 }
 .to-do-item {
     margin-top: 5px;
+}
+.clear-todo-list {    
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.green {
+    color: green;
 }

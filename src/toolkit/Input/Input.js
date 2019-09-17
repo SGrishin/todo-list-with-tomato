@@ -1,9 +1,19 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import theme from './Input.module.css';
 
 export default class Input extends PureComponent {
+    static propTypes = {
+        className: PropTypes.string,
+        inputRef: PropTypes.node,
+        label: PropTypes.string,
+        value: PropTypes.string,
+        onChange: PropTypes.func
+    };
     static defaultProps = {
+        className: '',
+        inputRef: null,
         label: '',
         value: '',
         onChange: null
@@ -21,7 +31,7 @@ export default class Input extends PureComponent {
         return (
             <input
                 ref={this.inputRef}
-                className={cx(className)}
+                className={cx(theme.input, className)}
                 placeholder={label}
                 value={value}
                 autoFocus

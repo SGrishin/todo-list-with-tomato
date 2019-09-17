@@ -1,0 +1,50 @@
+export const THREE_SECONDS = 5 * 1000;
+
+export const SEVEN_SECONDS = 7 * 1000;
+
+export const TEN_SECONDS = 10 * 1000;
+
+export const ONE_MINUTE = 60 * 1000;
+
+export const THREE_MINUTES = 3 * 60 * 1000;
+
+export const FIVE_MINUTES = 5 * 60 * 1000;
+
+export const FIFTEEN_MINUTES = 15 * 60 * 1000;
+
+export const TWENTY_FIVE_MINUTES = 25 * 60 * 1000;
+
+export const THIRTY_MINUTES = 30 * 60 * 1000;
+
+export const TEST_TOMATO = [
+    TEN_SECONDS,
+    THREE_SECONDS,
+    TEN_SECONDS,
+    THREE_SECONDS,
+    TEN_SECONDS,
+    THREE_SECONDS,
+    TEN_SECONDS,
+    SEVEN_SECONDS
+];
+
+export const SHORT_TOMATO = [
+    TWENTY_FIVE_MINUTES,
+    THREE_MINUTES,
+    TWENTY_FIVE_MINUTES,
+    THREE_MINUTES,
+    TWENTY_FIVE_MINUTES,
+    THREE_MINUTES,
+    TWENTY_FIVE_MINUTES,
+    FIFTEEN_MINUTES
+];
+
+export const LONG_TOMATO = [
+    TWENTY_FIVE_MINUTES,
+    FIVE_MINUTES,
+    TWENTY_FIVE_MINUTES,
+    FIVE_MINUTES,
+    TWENTY_FIVE_MINUTES,
+    FIVE_MINUTES,
+    TWENTY_FIVE_MINUTES,
+    THIRTY_MINUTES
+];

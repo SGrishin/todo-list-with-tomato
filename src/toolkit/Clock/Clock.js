@@ -1,11 +1,21 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { getHourFromUTC, getMinutesFormUTC, getSecondsFromUTC } from '../../utils';
 import theme from './Clock.module.css';
 
 export default class Clock extends PureComponent {
+    static propTypes = {
+        className: PropTypes.string,
+        startAfterMount: PropTypes.bool,
+        timerTime: PropTypes.number,
+        onTimerEnd: PropTypes.func
+    };
+
     static defaultProps = {
-        startAfterMount: true,
+        className: '',
+        startAfterMount: false,
+        timerTime: 0,
         onTimerEnd: null
     };
 
@@ -20,15 +30,21 @@ export default class Clock extends PureComponent {
         const { startAfterMount } = this.props;
 
         if (startAfterMount) {
-            // this.handleStartClock();
+            this.handleStartClock();
         }
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         const { startTimer, timerTime } = this.props;
 
         if (startTimer && !this.timerEnd) {
             this.handleStartTimer(timerTime);
+
+            return;
+        }
+
+        if (prevProps.startTimer && !this.props.startTimer) {
+            this.handleStopTimer();
         }
     }
 
@@ -41,15 +57,15 @@ export default class Clock extends PureComponent {
                 className={cx(theme.clock, className)}
             >
                 <span className={cx(theme.hours)}>
-                    hh
+                    00
                 </span>
                 :
                 <span className={cx(theme.minutes)}>
-                    mm
+                    00
                 </span>
                 :
                 <span className={cx(theme.seconds)}>
-                    ss
+                    00
                 </span>
             </div>
         );
@@ -143,11 +159,11 @@ export default class Clock extends PureComponent {
         const delta = this.timerEnd - new Date();
 
         if (delta <= 0) {
+            this.handleStopTimer();
+
             if (onTimerEnd) {
                 onTimerEnd();
             }
-
-            this.handleStopTimer();
 
             return;
         }

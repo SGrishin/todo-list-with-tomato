@@ -1,6 +1,19 @@
 .button {
-    height: 20px;
-    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
     border: 1px solid blue;
-    border-radius: 10px;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: Arial;
+    text-transform: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    border-color: #9ac7ec;
+    color: #1782da;    
 }

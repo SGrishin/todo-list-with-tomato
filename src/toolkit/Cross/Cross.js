@@ -1,8 +1,19 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import theme from './Cross.module.css';
 
 export default class Cross extends PureComponent {
+    static propTypes = {
+        className: PropTypes.string,
+        onClick: PropTypes.func
+    };
+
+    static defaultProps = {
+        className: '',
+        onClick: null
+    }
+
     render() {
         const { className, onClick } = this.props;
 
